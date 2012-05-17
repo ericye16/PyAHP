@@ -26,17 +26,25 @@ def makePath(AP, GTS, t = None): #If t is not supplied, GTS
 
 def openFile(AP, GTS):
     '''Open the .dat file and split it.'''
+    #First, let's check it exists.
+    from os.path import exists
+    if not exists(makePath(AP, GTS)):
+        print "AP{0}-{1} does not exist.".format(AP, GTS)
+        return    
     loc = makePath(AP, GTS)
     with open(loc, 'r') as fil:
         f = fil.read().split()
     return f
 
 def existGTS(AP, GTS):
-    '''Check if a GTS and its .dat file exists.'''
+    '''Check if a GTS and its .dat file exists.
+
+    Now deprecated (that was fast!) since openFile checks within the function.
+    '''
     try:
         f = open(makePath(AP, GTS))
     except IOError:
-        print "AP{0}-{1} does not exist.".format(AP, GTS)
+        #print "AP{0}-{1} does not exist.".format(AP, GTS)
         return False
     f.close()
     return True

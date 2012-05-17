@@ -42,20 +42,20 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     x, y, leng = getLoc(target)
     value = float(stationdata[x][y:y+leng])
 
-    if value = None:
-        print 'Data for this target and year are not availabe.'
+    if value == None:
+        print 'Data for this target and Sample Station are not availabe.'
         return
     
     if withDec:
-        if value.is_integer: #insert the decimal point
+        if value.is_integer(): #insert the decimal point
             dec = mapping[target][3]
             value /= 10^dec
             
     if asText: #return a string with units
         unit = mapping[target][4]
-        if unit != 'None':
+        if unit != 'None': #if there are units
             return "{0} {1}".format(value, unit)
         else:
-            return "{0}".format(value)
-    else:
+            return "{0}".format(value) #just print the value as a string if no units
+    else: #return just the value without units and as a float
         return value

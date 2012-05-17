@@ -1,0 +1,11 @@
+
+PLEASE NOTE: AS OF YET PyAHP IS UNUSABLE DUE TO THE LACK OF ENTRIES IN extract.mapping. IF YOU CAN HELP, PLEASE DO. OTHERWISE, DON'T BLAME ME FOR BAD OR LACK OF DATA.
+
+Excuse the lack of folders/organization--this was meant to be a quick way to provide a versatile interface to the AHP data.
+
+USAGE OF PyAHP:
+Copy (not cut) the "AHPDATA" folder into this directory. While we work on a frielier interface, you can open a python shell and 'from extract import *', and use the extract function to get what you want.
+
+Disclaimer: I said to copy the AHPDATA instead of cut because, while I don't see how things could go wrong, that has been the last words of many. So be safe. This is provided without a warranty.
+
+In other news, this is provided under the Gnu Public License. So if you use any of this code, it better also be licensed under the same license. Excuse the lack of legalese.
