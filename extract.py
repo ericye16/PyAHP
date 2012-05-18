@@ -45,6 +45,20 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'STSH-8': (3, 12, 3, 1, '*C'),
            'STSH-1': (3, 15, 3, 1, '*C'),
 
+           #TDS and TUR
+           'TDS1': (4, 6, 3, 0, 'mg/L'),
+           'TDS2': (4, 9, 3, 0, 'mg/L'),
+           'TUR1': (4, 12, 3, 0, 'NTU'),
+           'TUR2': (4, 15, 3, 0, 'NTU'),
+
+           #ALBEDO
+           #okay actually I'll do that later. I have a request from IoO's to do the images.
+
+           #IMAGES
+           'Sun Soil IMG': (4, 18, 4, 0, 'None'),
+           'Shade Soil IMG': (4, 22, 4, 0, 'None'),
+           
+           
            
            'DO': (1, 26, 5, 0, 'ppm'),
            'Soil pH': (2, 26, 4, 0, 'pH'),
