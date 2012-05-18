@@ -50,6 +50,9 @@ def selectImgs(AP, GTS):
         print "No pictures found for AP{0}-{1}".format(AP, GTS)
         return
 
+    if not allPics: #in case there aren't any pictures
+        return
+
     #for example, 'DSC_' or 'IMG_'--we only want the numbers
     head = allPics[0][:-8] 
 
@@ -62,5 +65,32 @@ def selectImgs(AP, GTS):
     #put the header and .jpg back on:
     pics = ['{0}{1}.JPG'.format(head, pic) for pic in pics]
 
-    print pics
+    return pics
+
+def copyIoOs(AP, GTS):
+    '''Copy the IoOs of an AP and GTS into a different folder.'''
+    
+    from os import mkdir
+    from shutil import copy2
+    from read import makePath
+
+    loc = makePath(AP, GTS, pics = True)
+
+    target = '{0}\\Images of Opportunity\\'.format(loc)
+    
+    #The following line has the ability to write in the folders. Be careful.
+    try:
+        mkdir(target)
+    except WindowsError:
+        print 'The directory cannot be created. Agk!'
+        return
+    
+    pics = selectImgs(AP, GTS)
+
+    if not pics: #again, in case no images were matched
+        return
+    
+    for pic in pics:
+        copy2('{0}\\{1}'.format(loc, pic), target)
+    return pics #to give some info to the caller.
     

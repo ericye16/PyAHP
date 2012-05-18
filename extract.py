@@ -119,7 +119,11 @@ def extract(target, AP, GTS, withDec = True, asText = False):
         print "No {0} data was found for this sample station.".format(target)
         return
     else:
-        value = float(value)
+        try:
+            value = float(value) #In AP13-725, there's an H that messed this up.
+        except:
+            print 'Non-numeric value read:{0}'.format(value)
+            return
 
 #I don't remember what the following is for. It looks redundant.
 ##    if value == None:
