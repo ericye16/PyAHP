@@ -13,8 +13,41 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'Page': (0, 5, 1, 0, 'None'),
            'Time': (0, 6, 4, 0, 'None'),
            'Weather': (0, 10, 0, 'Check'), #Check means you have to refer to other sheets
+           'Habitat': (1, 0, 2, 0, 'Check'),
+
+           #PROBES SOIL DATA
+           'SAT-HOG': (1, 2, 2, 1, 'm'),
+           'SAT-SUN': (1, 4, 3, 1, '*C'),
+           'SAT-SHA': (1, 7, 3, 1, '*C'),
+           'SWT1': (1, 10, 3, 1, '*C'),
+           'SWT2': (1, 13, 3, 1, '*C'),
+
+           #PROBES WATER DATA
+           'HYPRO2': (1, 16, 3, 1, '*C'),
+           'HYPRO4': (1, 19, 3, 1, '*C'),
+           'HYPRO6': (1, 22, 3, 1, '*C'),
+           'HYPRO8': (2, 0, 3, 1, '*C'),
+           'HYPRO1': (2, 3, 3, 1, '*C'),
+
+           #PROBES SUN SOIL TEMPERATURES
+           'STSL-S': (2, 6, 3, 1, '*C'),
+           'STSL-2': (2, 9, 3, 1, '*C'),
+           'STSL-4': (2, 12, 3, 1, '*C'),
+           'STSL-6': (2, 15, 3, 1, '*C'),
+           'STSL-8': (2, 18, 3, 1, '*C'),
+           'STSL-1': (2, 21, 3, 1, '*C'),
+
+           #PROBES SHADE SOIL TEMPERATURES
+           'STSH-S': (3, 0, 3, 1, '*C'),
+           'STSH-2': (3, 3, 3, 1, '*C'),
+           'STSH-4': (3, 6, 3, 1, '*C'),
+           'STSH-6': (3, 9, 3, 1, '*C'),
+           'STSH-8': (3, 12, 3, 1, '*C'),
+           'STSH-1': (3, 15, 3, 1, '*C'),
+
+           
            'DO': (1, 26, 5, 0, 'ppm'),
-           'Water pH': (2, 26, 4, 0, 'pH'),
+           'Soil pH': (2, 26, 4, 0, 'pH'),
            }
 #TODO: This is woefully incomplete. Please finish the rest of the mappings
 
@@ -39,8 +72,15 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     '''
     from read import openFile
     stationdata = openFile(AP, GTS)
+    if not stationdata: #no file found
+        return
     x, y, leng = getLoc(target)
-    value = float(stationdata[x][y:y+leng])
+    value = stationdata[x][y:y+leng]
+    if not value:
+        print "No {0} data was found for this sample station.".format(target)
+        return
+    else:
+        value = float(value)
 
     if value == None:
         print 'Data for this target and Sample Station are not availabe.'
@@ -49,7 +89,7 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     if withDec:
         if value.is_integer(): #insert the decimal point
             dec = mapping[target][3]
-            value /= 10^dec
+            value /= 10**dec
             
     if asText: #return a string with units
         unit = mapping[target][4]
