@@ -7,14 +7,29 @@ def listImgs(AP, GTS):
 
     from extract import mapping, extract
     #Select the targets that produce image numbers
+
+    #Everything labelled in mapping as IMG
     relKeys = [key for key in mapping if key[-3:] == 'IMG']
-    imgs = []
+    imgs = set()
     for key in relKeys:
         dscnNum = extract(key, AP, GTS)
         if dscnNum:#if the image is there
-            imgs.append(str(int(dscnNum)).zfill(4))
+            imgs.add(str(int(dscnNum)).zfill(4)) 
 
-    ##TODO: Add support for pans
+    #Add the other images in the pan:
+    panImg = extract("First Pan IMG", AP, GTS)
+    if panImg:
+        numInPan = extract('PanNum', AP, GTS)
+        panImg = int(panImg) #convert to integer from float
+        numInPan = int(numInPan)
+        for number in range(1, numInPan):
+            #The first image is already there, so don't add it again.
+            imgs.add(str((panImg + number) % 10000).zfill(4))
+
+    #Add the second image of the stereo pair:
+    sterImg = extract('Stereo IMG', AP, GTS)
+    if sterImg:
+        imgs.add(str((int(sterImg) + 1) % 10000).zfill(4))
     return imgs
 
 #TODO: finish this.

@@ -5,6 +5,7 @@ def makePath(AP, GTS, t = None, pics = False): #If t is not supplied, GTS
     the Windows Path to the .dat file as a string.
 
     If t is supplied, GTS is taken as the G-value and t the T-value.
+    A supplied t will create a path to the traverse (not into the Data) folder.
     
     If pics is True, return a path to the images directory instead.
     For IoO people.
@@ -38,6 +39,21 @@ def makePath(AP, GTS, t = None, pics = False): #If t is not supplied, GTS
 
 def openFile(AP, GTS):
     '''Open the .dat file and split it.'''
+
+    #About the .dat's:
+    #Numbers are stored in the .dat's verbatim from the FDSs, up to column 25
+    #for each line. Lines are separated by whitespace, which allows split() to
+    #easily break them up.
+    #Thus, f[0][2] would look for the character on the 0-th line, 2nd column.
+    #Remember everything is zero-indexed!
+    
+    #Column 26 and onward stores ion and other info gathered from the PCEs.
+    #Unlike the other fields, a decimal point is already stored there.
+
+    #AP8 and 9 create difficulty because they are not consistent in their
+    #encoding to the later APs. For AP9 in particular, the AP# is stored as
+    #one digit instead of 2, breaking the 0th line (and possibly others).
+    
     loc = makePath(AP, GTS)
     try:
         with open(loc, 'r') as fil:

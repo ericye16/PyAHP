@@ -55,8 +55,12 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            #okay actually I'll do that later. I have a request from IoO's to do the images.
 
            #IMAGES
+           #Targets that are DSCN numbers must end in 'IMG'           
            'Sun Soil IMG': (4, 18, 4, 0, 'None'),
            'Shade Soil IMG': (4, 22, 4, 0, 'None'),
+           'First Pan IMG': (5, 22, 4, 0, 'None'),
+           #Do not encode the # of pans as an 'IMG'.
+           'PanNum': (5, 20, 2, 0, 'None'),
            'VC1 IMG': (7, 22, 4, 0, 'None'),
            'VC2 IMG': (8, 0, 4, 0, 'None'),
            'GND CVR IMG': (8, 4, 4, 0, 'None'),
