@@ -9,3 +9,7 @@ Copy (not cut) the "AHPDATA" folder into this directory. While we work on a frie
 Disclaimer: I said to copy the AHPDATA instead of cut because, while I don't see how things could go wrong, that has been the last words of many. So be safe. This is provided without a warranty.
 
 In other news, this is provided under the Gnu Public License. So if you use any of this code, it better also be licensed under the same license. Excuse the lack of legalese.
+
+Now that we have a collaborator: indents are to be four spaces. Do not use a hard tab, and docstrings are a _necessity_. Things we need to do include: adding support for an exceptions function, which handles things that can't be handled by the usual extract program such as time and other 0-th line fields in AP9 (everything then is messed up), as well as soil type, which spans multiple lines.
+
+FTR, this program will probably not support page 2 of the FDS, since the amount of nulls would be too damn high. It just makes the more numerically-inclined things easier to extract.
