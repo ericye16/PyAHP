@@ -57,11 +57,29 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            #IMAGES
            'Sun Soil IMG': (4, 18, 4, 0, 'None'),
            'Shade Soil IMG': (4, 22, 4, 0, 'None'),
+           'VC1 IMG': (7, 22, 4, 0, 'None'),
+           'VC2 IMG': (8, 0, 4, 0, 'None'),
+           'GND CVR IMG': (8, 4, 4, 0, 'None'),
+           'BB1 IMG': (8, 8, 4, 0, 'None'),
+           'BB2 IMG': (8, 12, 4, 0, 'None'),
+           'Weather IMG': (9, 0, 4, 0, 'None'),
+           'DO/Soil pH IMG': (9, 4, 4, 0, 'None'),
+           'PHOS/NH4 IMG': (9, 8, 4, 0, 'None'),
+           'Stereo IMG': (9, 12, 4, 0, 'None'),
+           '5 in 1 IMG': (9, 16, 4, 0, 'None'),
+           'Chlorine IMG': (9, 20, 4, 0, 'None'),
            
-           
-           
+           #OTHER THINGS NOT IN FDSs BUT STILL IMPORTANT           
            'DO': (1, 26, 5, 0, 'ppm'),
            'Soil pH': (2, 26, 4, 0, 'pH'),
+           'Nitrates': (3, 26, 5, 0, 'mmol'), #NOTE UNIT MAY BE INCORRECT
+           'Nitrites': (4, 26, 4, 0, 'mmol'),
+           'Ammonia': (5, 26, 5, 0, 'ppm'),
+           'Phosphates': (6, 26, 5, 0, 'ppt'),
+           'Chlorine': (7, 26, 4, 0, 'ppt'),
+           'Water Hardness': (8, 26, 5, 0, 'ppt'), #Units?
+           'Alkalinity': (9, 26, 5, 0, 'ppt'),
+           'Water pH': (11, 0, 4, 0, 'pH'),
            }
 #TODO: This is woefully incomplete. Please finish the rest of the mappings
 
