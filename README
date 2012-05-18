@@ -13,3 +13,5 @@ In other news, this is provided under the Gnu Public License. So if you use any 
 Now that we have a collaborator: indents are to be four spaces. Do not use a hard tab, and docstrings are a _necessity_. Things we need to do include: adding support for an exceptions function, which handles things that can't be handled by the usual extract program such as time and other 0-th line fields in AP9 (everything then is messed up), as well as soil type, which spans multiple lines.
 
 FTR, this program will probably not support page 2 of the FDS, since the amount of nulls would be too damn high. It just makes the more numerically-inclined things easier to extract.
+
+Images of Opportunity people! Simply double-click on the ImgsOfOpp.py file and magic should spring forward from the code. Although to be safe, only try this on a *copy* of the data. Images of Opportunity, as the FDSs say they are, will be in a folder inside 'Raw' named 'Images of Opportunity.' If there are any issues, please tell me (Eric). Good luck!

@@ -15,7 +15,6 @@ def main():
         for G in range(1, numG + 1):
             for T in range(4):
                 numSS = listSS(AP, G, T)
-                print numSS
                 if numSS:
                     for station in numSS:
                         GTS = G*100 + T*10 + station
