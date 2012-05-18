@@ -101,6 +101,9 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     
     If asText is True, then a string will be returned with the units,
     if available. Otherwise a float value will be returned.
+
+    Errors: If no value is found, due to lack of files or lack of data,
+    None is returned.
     '''
     from read import openFile
     stationdata = openFile(AP, GTS)
@@ -114,9 +117,10 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     else:
         value = float(value)
 
-    if value == None:
-        print 'Data for this target and Sample Station are not availabe.'
-        return
+#I don't remember what the following is for. It looks redundant.
+##    if value == None:
+##        print 'Data for this target and Sample Station are not availabe.'
+##        return
     
     if withDec:
         if value.is_integer(): #insert the decimal point
