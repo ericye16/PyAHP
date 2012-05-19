@@ -1,4 +1,6 @@
 
+
+####MAIN
 def main():
     '''Copy the images of opportunity from all/most APs into
     the folder at once.'''
@@ -26,3 +28,30 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+def clean():
+    '''This will delete all Images of Opportunities folders.
+        Use this to clean up the mess if main() messes up really bad.'''
+
+    from shutil import rmtree
+    from util import listSS
+    from read import makePath
+
+    #Uh oh, I just copied-and-pasted code.
+    #I guess this means I'm doing something wrong.
+    for AP in range(8, 14):
+        if AP == 13: #Did you know that we're the only year with 7 FITs?
+            numG = 7
+        else:
+            numG = 6
+            
+        for G in range(1, numG + 1):
+            for T in range(4):
+                numSS = listSS(AP, G, T)
+                if numSS:
+                    for station in numSS:
+                        GTS = G*100 + T*10 + station
+                        print 'Deleting IoOs from: AP{0}-{1}.'.format(AP, GTS)
+                        rmtree('{0}\Images of Opportunity'.format(
+                            makePath(AP, GTS, pics = True)), True)
+            

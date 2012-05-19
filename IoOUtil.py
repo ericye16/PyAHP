@@ -1,6 +1,8 @@
 
 #This file will help IoO people sort out the images that are and aren't relevent.
 
+
+############################ListImgs########
 def listImgs(AP, GTS):
     '''List the images that *have* been used by the AHP.
     In other words, the images that are *not* images of opportunity.'''
@@ -32,7 +34,8 @@ def listImgs(AP, GTS):
         imgs.add(str((int(sterImg) + 1) % 10000).zfill(4))
     return imgs
 
-#TODO: finish this.
+
+#############################################SelectImgs#####
 def selectImgs(AP, GTS):
     '''A list of Images of Opportunity available for a given AP and GTS.'''
     from os import listdir
@@ -67,6 +70,8 @@ def selectImgs(AP, GTS):
 
     return pics
 
+
+#########################################Copy IoOs####
 def copyIoOs(AP, GTS):
     '''Copy the IoOs of an AP and GTS into a different folder.'''
     
@@ -82,7 +87,7 @@ def copyIoOs(AP, GTS):
     try:
         mkdir(target)
     except WindowsError:
-        print 'The directory cannot be created. Agk!'
+        print '''The directory cannot be created.'''
         return
     
     pics = selectImgs(AP, GTS)
@@ -91,6 +96,9 @@ def copyIoOs(AP, GTS):
         return
     
     for pic in pics:
-        copy2('{0}\\{1}'.format(loc, pic), target)
+        try:
+            copy2('{0}\\{1}'.format(loc, pic), target)
+        except:
+            print "Something happened and I'm not quite sure what, but go on anyways."
+            return
     return pics #to give some info to the caller.
-    

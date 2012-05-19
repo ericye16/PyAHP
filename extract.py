@@ -84,6 +84,9 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'Water Hardness': (8, 26, 5, 0, 'ppt'), #Units?
            'Alkalinity': (9, 26, 5, 0, 'ppt'),
            'Water pH': (11, 0, 4, 0, 'pH'),
+
+           #The official (reference) AHP lists PH and SP, and
+           #I'm not quite sure which is soil pH and which is water pH. Help?
            }
 #TODO: This is woefully incomplete. Please finish the rest of the mappings
 
