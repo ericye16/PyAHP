@@ -53,7 +53,7 @@ def selectImgs(AP, GTS):
         print "No pictures found for AP{0}-{1}".format(AP, GTS)
         return
 
-    if not allPics: #in case there aren't any pictures
+    if len(allPics) < 1: #in case there aren't any pictures
         return
 
     #for example, 'DSC_' or 'IMG_'--we only want the numbers
@@ -82,17 +82,18 @@ def copyIoOs(AP, GTS):
     loc = makePath(AP, GTS, pics = True)
 
     target = '{0}\\Images of Opportunity\\'.format(loc)
+
+     
+    pics = selectImgs(AP, GTS)
+
+    if not pics: #again, in case no images were matched
+        return
     
     #The following line has the ability to write in the folders. Be careful.
     try:
         mkdir(target)
     except WindowsError:
         print '''The directory cannot be created.'''
-        return
-    
-    pics = selectImgs(AP, GTS)
-
-    if not pics: #again, in case no images were matched
         return
     
     for pic in pics:

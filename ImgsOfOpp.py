@@ -8,7 +8,11 @@ def main():
     from util import listSS
     from IoOUtil import copyIoOs
     
-    for AP in range(8, 14):
+##    for AP in range(10, 14):
+
+    #Freedom of choice woot!
+    AP = int(raw_input('Enter the AP you want to sort IoOs for: '))
+    if 7<AP<14:
         if AP == 13: #Did you know that we're the only year with 7 FITs?
             numG = 7
         else:
@@ -25,6 +29,8 @@ def main():
                         if pics:
                             print 'Copied {0} Images of Opportunity from AP{1}-{2}'.\
                                   format(len(pics), AP, GTS)
+    else:
+        print 'Only APs 8 through 13 exist.'
 
 if __name__ == '__main__':
     main()
@@ -39,7 +45,7 @@ def clean():
 
     #Uh oh, I just copied-and-pasted code.
     #I guess this means I'm doing something wrong.
-    for AP in range(8, 14):
+    for AP in range(10, 14):
         if AP == 13: #Did you know that we're the only year with 7 FITs?
             numG = 7
         else:
