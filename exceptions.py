@@ -14,7 +14,7 @@ def isException(target, AP, GTS):
     To do the proper extraction of excepted targets, use exceptionExtract.'''
     return False #We're working on it...
 
-def exceptionExtract(target, AP, GTS):
+def exceptionExtract(target, AP, GTS, withDec = True, asText = False):
     '''If the target-AP-GTS combination is not covered by the orthodox
     extract function, this will extract it, if applicable.'''
     return #Also finish this.

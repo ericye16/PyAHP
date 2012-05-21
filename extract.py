@@ -85,6 +85,10 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'Alkalinity': (9, 26, 5, 0, 'ppt'),
            'Water pH': (11, 0, 4, 0, 'pH'),
 
+           #Note: I'm not sure about Water and Soil pH--it's unclear as to
+           #which is which. PH vs. SP on the AHP, but Soil pH is taken with DO,
+           #So I thought it'd be right after DO.
+
            #The official (reference) AHP lists PH and SP, and
            #I'm not quite sure which is soil pH and which is water pH. Help?
            }
@@ -113,19 +117,26 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     None is returned.
     '''
     from read import openFile
+    from exceptions import isException
+
+    if isException(target, AP, GTS):
+        from exceptions import exceptionExtract
+        return exceptionExtract(target, AP, GTS, withDec, asText)
+    
     stationdata = openFile(AP, GTS)
     if not stationdata: #no file found
         return
     x, y, leng = getLoc(target)
     value = stationdata[x][y:y+leng]
     if not value:
-        print "No {0} data was found for this sample station.".format(target)
+        print "No {0} data was found for AP{1}-{2}.".format(target, AP, GTS)
         return
     else:
         try:
             value = float(value) #In AP13-725, there's an H that messed this up.
         except:
-            print 'Non-numeric value read:{0}'.format(value)
+            print 'Non-numeric value read:{0} for {1} in AP{2}-{3}'.format(
+                value, target, AP, GTS)
             return
 
 #I don't remember what the following is for. It looks redundant.

@@ -79,3 +79,22 @@ def traverseAll(stmt):
 ##                        print 'Did not run properly for AP{0}-{1}'.format(AP, GTS)
     for AP in range(8, 14):
         traverseAP(AP, stmt)
+
+
+####################Using the traverse functions!
+def forAllAPs(target, GTS):
+    '''Gets all the values of the target for all of that GTS through AP 8 - 13.
+    In other words, if you wanted 'Water pH', 622, it would get you that value
+    for Water pH in AP8-622, AP9-622, etc.
+
+    Returns a  list of the format [AP8.val, AP9.val...AP13.val]. If no value
+    exists, None is put in its place.
+    '''
+
+    from extract import extract
+
+    l = []
+    for AP in range(8, 14):
+        l.append(extract(target, AP, GTS))
+
+    return l
