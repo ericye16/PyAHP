@@ -98,3 +98,18 @@ def forAllAPs(target, GTS):
         l.append(extract(target, AP, GTS))
 
     return l
+
+def forAllAPsGTS(target):
+    '''Gets the value of the target for all GTSs for all APs.
+
+    Essentially, repeatedly calls forAllAPs.
+    '''
+
+    l = []
+    AP = 10 #reference AP
+    for G in range(1, 7):
+        for T in listT(AP, G):
+            for S in listSS(AP, G, T):
+                GTS = G*100+T*10+S
+                l.append(forAllAPs(target, GTS))
+    return l

@@ -16,7 +16,7 @@ def listImgs(AP, GTS):
     for key in relKeys:
         dscnNum = extract(key, AP, GTS)
         if dscnNum:#if the image is there
-            imgs.add(str(int(dscnNum)).zfill(4)) 
+            imgs.add(str(int(dscnNum)).zfill(4))
 
     #Add the other images in the pan:
     panImg = extract("First Pan IMG", AP, GTS)
@@ -48,7 +48,7 @@ def selectImgs(AP, GTS):
         allPics = [picture for picture in
                    listdir(makePath(AP, GTS, pics = True))
                    if picture[-4:].upper() == ".JPG"]
-        
+
     except: #if you can't find anything
         print "No pictures found for AP{0}-{1}".format(AP, GTS)
         return
@@ -57,7 +57,7 @@ def selectImgs(AP, GTS):
         return
 
     #for example, 'DSC_' or 'IMG_'--we only want the numbers
-    head = allPics[0][:-8] 
+    head = allPics[0][:-8]
 
     #strip away the head and .jpg.
     pics = [pic[-8:-4] for pic in allPics]
@@ -74,7 +74,7 @@ def selectImgs(AP, GTS):
 #########################################Copy IoOs####
 def copyIoOs(AP, GTS):
     '''Copy the IoOs of an AP and GTS into a different folder.'''
-    
+
     from os import mkdir
     from shutil import copy2
     from read import makePath
@@ -83,19 +83,19 @@ def copyIoOs(AP, GTS):
 
     target = '{0}\\Images of Opportunity\\'.format(loc)
 
-     
+
     pics = selectImgs(AP, GTS)
 
     if not pics: #again, in case no images were matched
         return
-    
+
     #The following line has the ability to write in the folders. Be careful.
     try:
         mkdir(target)
     except WindowsError:
         print '''The directory cannot be created.'''
         return
-    
+
     for pic in pics:
         try:
             copy2('{0}\\{1}'.format(loc, pic), target)

@@ -117,17 +117,20 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     None is returned.
     '''
     from read import openFile
-    from exceptions import isException
-
-    if isException(target, AP, GTS):
-        from exceptions import exceptionExtract
-        return exceptionExtract(target, AP, GTS, withDec, asText)
+##    from exceptions import isException
+##
+##    if isException(target, AP, GTS):
+##        from exceptions import exceptionExtract
+##        return exceptionExtract(target, AP, GTS, withDec, asText)
     
     stationdata = openFile(AP, GTS)
     if not stationdata: #no file found
         return
     x, y, leng = getLoc(target)
-    value = stationdata[x][y:y+leng]
+    try:
+        value = stationdata[x][y:y+leng]
+    except:
+        value = None
     if not value:
         print "No {0} data was found for AP{1}-{2}.".format(target, AP, GTS)
         return
