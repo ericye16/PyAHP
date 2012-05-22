@@ -57,10 +57,40 @@ def openFile(AP, GTS):
     loc = makePath(AP, GTS)
     try:
         with open(loc, 'r') as fil:
-            f = fil.read().split() #read the file into the variable f.
+            e = fil.read() #read the file into the variable f.
     except IOError: #If the file is not there
         print "AP{0}-{1} does not exist.".format(AP, GTS)
         return
+    
+    #It turns out that we can't use whitespace to separate the shit so I'll use dem sexay undersores instead mmkay?
+
+    #so actually, we need to manually split the sections.
+    f = []
+
+    ##The below could be heavily optimized.
+
+    # Page 1
+    f.append(e[:99].rstrip())
+    f.append(e[99:198].rstrip())
+    f.append(e[198:297].rstrip())
+    f.append(e[297:396].rstrip())
+    f.append(e[396:495].rstrip())
+    f.append(e[495:594].rstrip())
+    f.append(e[594:693].rstrip())
+    f.append(e[693:792].rstrip())
+    f.append(e[792:891].rstrip())
+    f.append(e[891:990].rstrip())
+
+    # Page 2
+    f.append(e[990:1000].rstrip())
+    f.append(e[1000:1099].rstrip())
+    f.append(e[1099:1198].rstrip())
+    f.append(e[1198:1297].rstrip())
+
+    #etc, but I don't have support for the rest of page 2.
+
+    ##The above needs to be heavily optimized.    
+    
     return f
 
 def existGTS(AP, GTS):

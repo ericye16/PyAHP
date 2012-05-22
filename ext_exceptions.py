@@ -12,10 +12,12 @@
 
 def isException(target, AP, GTS):
     '''True if the given target, AP and GTS require special handling.
-    To do the proper extraction of excepted targets, use exceptionExtract.'''
+    To do the proper extraction of excepted targets, use exceptionExtract.
+    '''
     return False #We're working on it...
 
 def exceptionExtract(target, AP, GTS, withDec = True, asText = False):
     '''If the target-AP-GTS combination is not covered by the orthodox
-    extract function, this will extract it, if applicable.'''
+    extract function, this will extract it, if applicable.
+    '''
     return #Also finish this.

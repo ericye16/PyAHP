@@ -73,7 +73,8 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            '5 in 1 IMG': (9, 16, 4, 0, 'None'),
            'Chlorine IMG': (9, 20, 4, 0, 'None'),
            
-           #OTHER THINGS NOT IN FDSs BUT STILL IMPORTANT           
+           #OTHER THINGS NOT IN FDSs BUT STILL IMPORTANT
+           #Eric is a n00b. :)
            'DO': (1, 26, 5, 0, 'ppm'),
            'Soil pH': (2, 26, 4, 0, 'pH'),
            'Nitrates': (3, 26, 5, 0, 'mmol'), #NOTE UNIT MAY BE INCORRECT
@@ -83,7 +84,7 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'Chlorine': (7, 26, 4, 0, 'ppt'),
            'Water Hardness': (8, 26, 5, 0, 'ppt'), #Units?
            'Alkalinity': (9, 26, 5, 0, 'ppt'),
-           'Water pH': (11, 0, 4, 0, 'pH'),
+           'Water pH': (10, 26, 4, 0, 'pH'),
 
            #Note: I'm not sure about Water and Soil pH--it's unclear as to
            #which is which. PH vs. SP on the AHP, but Soil pH is taken with DO,
@@ -117,11 +118,11 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     None is returned.
     '''
     from read import openFile
-##    from exceptions import isException
-##
-##    if isException(target, AP, GTS):
-##        from exceptions import exceptionExtract
-##        return exceptionExtract(target, AP, GTS, withDec, asText)
+    from ext_exceptions import isException
+
+    if isException(target, AP, GTS):
+        from exceptions import exceptionExtract
+        return exceptionExtract(target, AP, GTS, withDec, asText)
     
     stationdata = openFile(AP, GTS)
     if not stationdata: #no file found
