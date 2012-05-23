@@ -119,6 +119,7 @@ def extract(target, AP, GTS, withDec = True, asText = False):
     '''
     from read import openFile
     from ext_exceptions import isException
+    import re
 
     if isException(target, AP, GTS):
         from exceptions import exceptionExtract
@@ -132,6 +133,11 @@ def extract(target, AP, GTS, withDec = True, asText = False):
         value = stationdata[x][y:y+leng]
     except:
         value = None
+
+    #return None if it's just whitespace.
+    if re.match(r'\W+$', value)is not None: #double negatives ftw.
+        return
+    
     if not value:
         print "No {0} data was found for AP{1}-{2}.".format(target, AP, GTS)
         return

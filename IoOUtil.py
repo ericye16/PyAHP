@@ -66,7 +66,7 @@ def selectImgs(AP, GTS):
     pics = [pic for pic in pics if pic not in FDSImgs]
 
     #put the header and .jpg back on:
-    pics = ['{0}{1}.JPG'.format(head, pic) for pic in pics]
+    pics = ['*{0}.JPG'.format(pic) for pic in pics]
 
     return pics
 
@@ -76,30 +76,45 @@ def copyIoOs(AP, GTS):
     '''Copy the IoOs of an AP and GTS into a different folder.'''
 
     from os import mkdir
+    from os.path import isdir
     from shutil import copy2
     from read import makePath
+    import glob
 
-    loc = makePath(AP, GTS, pics = True)
+    loc = makePath(AP, GTS, pics = True) #current pictures directory
 
     target = '{0}\\Images of Opportunity\\'.format(loc)
 
 
     pics = selectImgs(AP, GTS)
+    print pics
 
     if not pics: #again, in case no images were matched
         return
 
     #The following line has the ability to write in the folders. Be careful.
-    try:
-        mkdir(target)
-    except WindowsError:
-        print '''The directory cannot be created.'''
-        return
 
-    for pic in pics:
+    if not isdir(target):
         try:
-            copy2('{0}\\{1}'.format(loc, pic), target)
+            mkdir(target)
+        except WindowsError:
+            print '''The directory cannot be created.'''
+            return
+
+    ### TODO: ADD WILDCARD SUPPORT
+
+    wentOn = True
+    for pic in pics:
+        print pic
+        picFile = glob.glob('{0}\\{1}'.format(loc, pic))[0]
+        print picFile
+        
+        try:
+            copy2(picFile, target)
         except:
             print "Something happened and I'm not quite sure what, but go on anyways."
-            return
+            wentOn = False #make False if something goes wrong.
+
+    if not wentOn:
+        return
     return pics #to give some info to the caller.
