@@ -93,7 +93,7 @@ def forAllAPs(target, GTS):
 
     from extract import extract
 
-    l = []
+    l = [GTS]
     for AP in range(8, 14):
         l.append(extract(target, AP, GTS))
 
