@@ -76,7 +76,7 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            #OTHER THINGS NOT IN FDSs BUT STILL IMPORTANT
            #Eric is a n00b. :)
            'DO': (1, 26, 5, 0, 'ppm'),
-           'Soil pH': (2, 26, 4, 0, 'pH'),
+           'pH': (2, 26, 4, 0, 'pH'),
            'Nitrates': (3, 26, 5, 0, 'mmol'), #NOTE UNIT MAY BE INCORRECT
            'Nitrites': (4, 26, 4, 0, 'mmol'),
            'Ammonia': (5, 26, 5, 0, 'ppm'),
@@ -84,11 +84,7 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'Chlorine': (7, 26, 4, 0, 'ppt'),
            'Water Hardness': (8, 26, 5, 0, 'ppt'), #Units?
            'Alkalinity': (9, 26, 5, 0, 'ppt'),
-           'Water pH': (10, 26, 4, 0, 'pH'),
-
-           #Note: I'm not sure about Water and Soil pH--it's unclear as to
-           #which is which. PH vs. SP on the AHP, but Soil pH is taken with DO,
-           #So I thought it'd be right after DO.
+           'Soil pH': (10, 26, 4, 0, 'pH'),
 
            #The official (reference) AHP lists PH and SP, and
            #I'm not quite sure which is soil pH and which is water pH. Help?
