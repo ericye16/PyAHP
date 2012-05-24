@@ -1,6 +1,4 @@
 
-PLEASE NOTE: AS OF YET PyAHP IS UNUSABLE DUE TO THE LACK OF ENTRIES IN extract.mapping. IF YOU CAN HELP, PLEASE DO. OTHERWISE, DON'T BLAME ME FOR BAD OR LACK OF DATA.
-
 Excuse the lack of folders/organization--this was meant to be a quick way to provide a versatile interface to the AHP data.
 
 USAGE OF PyAHP:
@@ -15,3 +13,63 @@ Now that we have a collaborator: indents are to be four spaces. Do not use a har
 FTR, this program will probably not support page 2 of the FDS, since the amount of nulls would be too damn high. It just makes the more numerically-inclined things easier to extract.
 
 Images of Opportunity people! Simply double-click on the ImgsOfOpp.py file and magic should spring forward from the code. Although to be safe, only try this on a *copy* of the data. Images of Opportunity, as the FDSs say they are, will be in a folder inside 'Raw' named 'Images of Opportunity.' If there are any issues, please tell me (Eric). Good luck!
+
+Available fields (in no order whatsoever):
+First Pan IMG
+TDS1
+STSH-S
+TDS2
+BB2 IMG
+SAT-SUN
+Stereo IMG
+STSL-S
+VC1 IMG
+Alkalinity
+PHOS/NH4 IMG
+Shade Soil IMG
+Nitrites
+VC2 IMG
+BB1 IMG
+Chlorine
+STSL-1
+STSL-2
+STSL-4
+STSL-6
+STSL-8
+TUR2
+TUR1
+PanNum
+GTS
+Time
+DO/Soil pH IMG
+STSH-4
+Weather IMG
+STSH-6
+STSH-1
+Habitat
+STSH-2
+Chlorine IMG
+SWT2
+STSH-8
+SWT1
+DO
+SAT-SHA
+5 in 1 IMG
+SAT-HOG
+HYPRO8
+HYPRO4
+HYPRO6
+HYPRO1
+HYPRO2
+Sun Soil IMG
+GND CVR IMG
+Soil pH
+AP
+Water pH
+Page
+Nitrates
+Water Hardness
+Weather
+Phosphates
+Ammonia
+Note: fields ending in 'IMG' indicate DSCN numbers and are probably not useful.
