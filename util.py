@@ -94,7 +94,9 @@ def forAllAPs(target, GTS):
     from extract import extract
 
     l = [GTS]
-    for AP in range(8, 14):
+    #AP8 is not included because I am not satisfied with
+    #how PyAHP reads its data.
+    for AP in range(9, 14):
         l.append(extract(target, AP, GTS))
 
     return l
