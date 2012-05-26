@@ -42,29 +42,33 @@ def openFile(AP, GTS):
 
     #About the .dat's:
     #Numbers are stored in the .dat's verbatim from the FDSs, up to column 25
-    #for each line. Lines are separated by whitespace, which allows split() to
-    #easily break them up.
-    #Thus, f[0][2] would look for the character on the 0-th line, 2nd column.
+    #for each line. Lines are separated as strings of 99 characters;
+    #however, only about 29-30 of them are ever used.
+    #split() cannot be used because it is not whitespace separating them,
+    #it is chunks of 99 characters.
+    #
+    #f[0][2] would look for the character on the 0-th line, 2nd column.
     #Remember everything is zero-indexed!
     
-    #Column 26 and onward stores ion and other info gathered from the PCEs.
+    #Column 26 and onward stores ion and other info gathered from the PCEs
+    #for lines =< 10 (I think?).
     #Unlike the other fields, a decimal point is already stored there.
 
-    #AP8 and 9 create difficulty because they are not consistent in their
-    #encoding to the later APs. For AP9 in particular, the AP# is stored as
+    #AP8 creates difficulty because they are not consistent in their
+    #encoding to the later APs. For AP9, the AP# is stored as
     #one digit instead of 2, breaking the 0th line (and possibly others).
     
     loc = makePath(AP, GTS)
     try:
         with open(loc, 'r') as fil:
-            e = fil.read() #read the file into the variable f.
+            e = fil.read() #read the file into the variable e without splitting.
     except IOError: #If the file is not there
         print "AP{0}-{1} does not exist.".format(AP, GTS)
         return
     
-    #It turns out that we can't use whitespace to separate the shit so I'll use dem sexay undersores instead mmkay?
+    #It turns out that we can't use whitespace to separate the lines,
+    #so we need to manually split them
 
-    #so actually, we need to manually split the sections.
     f = []
 
     ##The below could be heavily optimized.
