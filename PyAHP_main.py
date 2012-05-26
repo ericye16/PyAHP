@@ -6,6 +6,18 @@ def main():
     from extract import mapping
     from util import forAllAPsGTS, forAllAPs
     from wutils import writeToCSV
+
+    #Run on the command line so: python PyAHP_main.py HYPRO1 HYPRO2 HYPRO4 etc.
+    import sys
+    for wanted in sys.argv[1:]:
+        if wanted in mapping:
+            print 'Collecting data...'
+            data = forAllAPsGTS(wanted)
+            print 'Data collected. Writing to {0}.csv'.format(wanted)
+            writeToCSV(data, wanted)
+            print 'File written in this folder as {0}.csv'.format(wanted)
+        else:
+            print 'Skipped unknown mapping ', wanted
     
     while True:
         wanted = raw_input('What field?')
