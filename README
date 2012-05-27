@@ -2,6 +2,7 @@ Excuse the lack of folders/organization--this was meant to be a quick way to pro
 
 USAGE OF PyAHP:
 Copy (not cut) the "AHPDATA" folder into this directory. While we work on a frielier interface, you can open a python shell and 'from extract import *', and use the extract function to get what you want.
+NEW! As of May 25, you can do bulk CSV exports by entering this into a terminal/command prompt: python PyAHP_main.py A B C D E, where A..E are names of fields (see below).
 
 Disclaimer: I said to copy the AHPDATA instead of cut because, while I don't see how things could go wrong, that has been the last words of many. So be safe. This is provided without a warranty.
 
