@@ -14,6 +14,8 @@ def isException(target, AP, GTS):
     '''True if the given target, AP and GTS require special handling.
     To do the proper extraction of excepted targets, use exceptionExtract.
     '''
+    if AP == 8:
+        return True
     return False #We're working on it...
 
 def exceptionExtract(target, AP, GTS, withDec = True, asText = False):
