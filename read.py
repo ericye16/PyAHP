@@ -86,10 +86,10 @@ def openFile(AP, GTS):
     f.append(e[891:990].rstrip())
 
     # Page 2
-    f.append(e[990:1000].rstrip())
-    f.append(e[1000:1099].rstrip())
-    f.append(e[1099:1198].rstrip())
-    f.append(e[1198:1297].rstrip())
+    f.append(e[990:1089].rstrip())
+    f.append(e[1089:1188].rstrip())
+    f.append(e[1188:1287].rstrip())
+    f.append(e[1287:1386].rstrip())
 
     #etc, but I don't have support for the rest of page 2.
 
