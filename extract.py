@@ -1,4 +1,3 @@
-
 #This file will contain the mappings of data to location they are stored in.
 #The location will be given as a tuple:
         #(row, column, number of digits, decimal place, units)
@@ -12,7 +11,8 @@ mapping = {'AP': (0, 0, 2, 0, 'None'),
            'GTS': (0, 2, 3, 0, 'None'),
            'Page': (0, 5, 1, 0, 'None'),
            'Time': (0, 6, 4, 0, 'None'),
-           'Weather': (0, 10, 0, 'Check'), #Check means you have to refer to other sheets
+           'Cloud': (0, 11, 2, 0, '%'),		
+           'Windspeed': (0, 13, 1, 0, 'm/s'),           
            'Habitat': (1, 0, 2, 0, 'Check'),
 
            #PROBES SOIL DATA
