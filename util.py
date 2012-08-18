@@ -1,6 +1,19 @@
 
 
 ############################List functions!
+def listAP(incl8 = False):
+    from os import listdir
+    from read import makePath
+    try:
+        dirnames = listdir('AHPDATA')
+    except:
+        return
+    APs = [int(AP[2:]) for AP in dirnames]
+    if not incl8:
+        APs.remove(8)
+    APs.sort()
+    return APs
+
 def listSS(AP, G, T):
     '''List the available sample stations for a given AP, FIT and Traverse.'''
     from os import listdir
@@ -11,6 +24,7 @@ def listSS(AP, G, T):
         return #versatility in case no such AP/G/T exists.
     dirnames.remove('Data')
     ss = [int(station[2:]) for station in dirnames]
+    ss.sort()
     return ss
 
 def listT(AP, G):
@@ -77,7 +91,7 @@ def traverseAll(stmt):
 ##                        exec(stmt)
 ##                    except:
 ##                        print 'Did not run properly for AP{0}-{1}'.format(AP, GTS)
-    for AP in range(8, 14):
+    for AP in listAP:
         traverseAP(AP, stmt)
 
 
@@ -96,7 +110,7 @@ def forAllAPs(target, GTS):
     l = [GTS]
     #AP8 is not included because I am not satisfied with
     #how PyAHP reads its data.
-    for AP in range(9, 14):
+    for AP in listAP():
         l.append(extract(target, AP, GTS))
 
     return l
@@ -109,7 +123,7 @@ def forAllAPsGTS(target):
 
     l = []
     AP = 13 #reference AP
-    for G in range(1, 8):
+    for G in listG(AP):
         for T in listT(AP, G):
             for S in listSS(AP, G, T):
                 GTS = G*100+T*10+S

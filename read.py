@@ -12,18 +12,18 @@ def makePath(AP, GTS, t = None, pics = False): #If t is not supplied, GTS
 
     If both t and pics are specified, which should never happen, pics has precedence.'''
 
-    base = 'AHPDATA\\AP{0}\\'.format(AP)
+    base = 'AHPDATA/AP{0}/'.format(AP)
     G = GTS/100
     T = (GTS-G*100) / 10
     S = GTS%10
     
     if pics:
-        return '{bases}FIT{0}\\T{1}\\SS{2}\\Images\\Raw'.format(G, T, S, bases = base)
+        return '{bases}FIT{0}/T{1}/SS{2}/Images/Raw'.format(G, T, S, bases = base)
 
 
     if t: #create directory for the traverse rather than for the specific
             #sample station
-        return '{bases}FIT{0}\\T{1}'.format(GTS, t, bases = base)
+        return '{bases}FIT{0}/T{1}'.format(GTS, t, bases = base)
     
     #Eric's a bunny
     #Disguised as a human
@@ -34,7 +34,7 @@ def makePath(AP, GTS, t = None, pics = False): #If t is not supplied, GTS
     #AP13 GTS 622 should be:
     #AHPDATA\AP13\FIT6\T2\Data\13-622.dat
     else:
-        return r'{bases}FIT{1}\T{2}\Data\{3}-{4}.dat'.format(\
+        return r'{bases}FIT{1}/T{2}/Data/{3}-{4}.dat'.format(\
             AP, G, T, AP, GTS, bases = base)
 
 def openFile(AP, GTS):

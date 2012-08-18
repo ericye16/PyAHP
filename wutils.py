@@ -1,8 +1,12 @@
 
 
 # The titles of the columns.
-frow = ['GTS', 'AP9', 'AP10', 'AP11', 'AP12', 'AP13']
-# AP8 reading capability is not good enough to be included.
+from util import listAP
+frow = ['GTS']
+allAPs = listAP()
+allAPs = ['AP{0}'.format(x) for x in allAPs] #convert to string
+frow.extend(allAPs)
+
 
 def writeToCSV(data, filename):
     '''Take data, as a 2D list, and write it to filename.csv'''
